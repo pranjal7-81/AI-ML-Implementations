@@ -1,0 +1,24 @@
+# Virtual environment
+impl/
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Gradio
+.gradio/
+
+# Environment variables / secrets
+.env
+
+# VS Code
+.vscode/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db

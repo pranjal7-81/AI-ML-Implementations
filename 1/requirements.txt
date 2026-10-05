@@ -1,0 +1,4 @@
+langchain
+gradio
+boto3
+awscliS

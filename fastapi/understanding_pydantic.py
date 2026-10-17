@@ -1,14 +1,18 @@
 from pydantic import AnyUrl, BaseModel , EmailStr, Field ,gt
-from typing import List , Dict , Optional , Annotated ,title, description
+from typing import List , Dict , Optional , Annotated
+
+
 class Patient(BaseModel):
-    name: str = Annotated[str, Field(min_length=1, max_length=50),title='Patient Name',description='Name of the patient in less than 50 characters']
-    age: int = Field(gt=0)
+    name: str = Annotated[str, Field(min_length=1, max_length=50,title='Patient Name',description='Name of the patient in less than 50 characters',examples = ['John Doe', 'Jane Smith'])]
+    age: int = Annotated[int, Field(gt=0)]
     email: EmailStr
-    weight: float = Field(gt=0)
+    weight: float = Annotated[float, Field(gt=0)]
     linkedin_url : AnyUrl
-    married: Optional[bool] = None
-    allergies: Optional[List[str]] = Field(max_length=5)
+    married: Annotated[bool, Field(title='Married Status', description='Is the patient married or not?')]
+    allergies: Annotated[Optional[List[str]], Field(max_length=5)]
     contact_details: Dict[str, str]
+     
+     
      
 def insert_patient(patient: Patient):
     print(patient.name)
@@ -23,5 +27,6 @@ patient_info = {'name': 'John Doe', 'age': 40 , 'email': 'john.doe@example.com',
 
 
 patient1 = Patient(**patient_info)
+
 
 insert_patient(patient1) 
